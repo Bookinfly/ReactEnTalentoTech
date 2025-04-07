@@ -1,0 +1,24 @@
+.LaCaja {
+  margin: 20px;
+  padding: 50px;
+  background-color: #99aaee;
+  color: #333377;
+  border: #333377 4px solid;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.Botonaso{
+  color: #99aaee;
+  background-color: #333377;
+  border: #555599 2px solid;
+  box-shadow: 5px 2px 4px #333377b9;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
