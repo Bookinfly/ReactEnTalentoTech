@@ -7,7 +7,7 @@ const Team = ( { staff } ) => {
       const { nombre, rol, imagen } = member 
 
       return (
-        <div key={index} style={ {display:"flex", width:"80vw", margin:"auto", boxSizing: "border-box", border:"2px black solid", padding:"20px", backgroundColor:"gray" }}>
+        <div key={index} style={ {display:"flex", minWidth:"80vw", margin:"auto", boxSizing: "border-box", overflow:"hidden", border:"2px black solid", padding:"20px", backgroundColor:"gray" }}>
           <h2>{rol}</h2>
           <figure>
             <img src={imagen} alt={`Foto de ${nombre}`} style={{ width:"300px"}}/>
