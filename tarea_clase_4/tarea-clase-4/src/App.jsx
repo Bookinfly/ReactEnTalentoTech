@@ -1,8 +1,8 @@
 import React, { Profiler, useState } from 'react'
-import './App.css'
-import Products from './components/Products'
+import Header from "./components/Header"
+import Main from "./components/Main"
+import Footer from "./components/Footer"
 
-let listItems = [{producto: "leche", precio:1}, {producto:"azúcar", precio:1.2}, {producto:"galletitas", precio:2}, {producto:"café",precio:3}, {producto:"arroz",precio:2}, {producto:"jugo",precio:0.5}, {producto:"gaseosa",precio:1}]
 
 
 function App() {
@@ -10,7 +10,9 @@ function App() {
 
   return (
     <div>
-      <Products listItems={listItems}/>
+      <Header></Header>
+      <Main></Main>
+      <Footer></Footer>
     </div>
   )
 }
