@@ -3,7 +3,7 @@ import React from "react";
 const Header = ()=> {
   return (
     <header>
-      <a href="#"><img src="./images/logo.svg" alt="logo" style={{width:"50px"}}/></a>
+      <a href="#"><img src="./images/logo.png" alt="logo" style={{width:"50px"}}/></a>
       <nav>
         <ul>
           <li><a href="">Almacén</a></li>

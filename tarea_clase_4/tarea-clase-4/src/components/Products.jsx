@@ -72,10 +72,10 @@ const Products =  ({listItems}) => {
       })
     }
     </ul>
-    <div className="cart" style={displayBoxes}>
-      {acu}
+    <div className="main__section__products__div" style={displayBoxes}>
+      <span className="main__section__products__div--price">Carrito por un todal de ${acu}</span>
     </div>
-    <Cart listOfItems={listItems} cantItems={cant} total={acu} setDisplayBoxes={setDisplayBoxes} displayBoxes={displayBoxes}></Cart>
+    <Cart listOfItems={listItems} cantItems={cant} total={acu} setDisplayBoxes={setDisplayBoxes} displayBoxes={displayBoxes} ></Cart>
   </div>
 }
 

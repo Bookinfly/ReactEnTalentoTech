@@ -11,11 +11,13 @@ const Main = () => {
           <span className="main__section__title--mod">MARKET</span>
         </h1>
         <h2 className="main__section__subtitle">Ofertas de otro mundo</h2>
+        <figure className="main__section__figure--logo">
+          <img src="./images/logo.png" alt="logo CrazyMARKET"  className="main__section__figure__img--logo"/>
+        </figure>
         <div className="main__section__div">
           <figure className="main__section__figure">
             <img src="./images/woman.png" alt="Mujer usando su móvil desde el sofá" style={{minwidth:"200px", maxWidth:"35vw"}} 
               className="main__section__figure__image"/>
-            {/* <figcaption className="main__section__figure__caption">Aproveche su tiempo</figcaption> */}
           </figure>
           <h3 className="main__section__h3">Olvida la fila del super!!!</h3>
         </div>
