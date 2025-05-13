@@ -56,17 +56,17 @@ const Products =  ({listItems}) => {
   }, [cant]);
 
 
-  return <div>
+  return <div className="main__section__products">
     {/** recorre la lista y en cada iteración crea un li */}
-    <ul className="cart" style={displayBoxes}>
+    <ul className="main__section__products--list" style={displayBoxes}>
       { listItems.map( (item, key)=>{
         return (
-          <li key={key}>
-            <span >{ `${item.producto} :$${item.precio}` }</span>
-            <button  onClick={ () => {suma(key)} }>+</button>
+          <li key={key} className="main__section__products--item">
+            <span className="main__section__products--item-name">{ `${item.producto} : $${item.precio}` }</span>
+            <button  onClick={ () => {suma(key)} } className="main__section__products--item-button">+</button>
             <button  onClick={ () => {resta(key)} }>-</button>
-            <span className="cant">{`Unidades ${cant[key]} `}</span>
-            <span className="precio">{`Costo total $${(cant[key]*item.precio).toFixed(2)}`}</span>
+            <span className="main__section__products--item-cant">{`Unidades ${cant[key]} `}</span>
+            <span className="main__section__products--item-precio">{`Total $${(cant[key]*item.precio).toFixed(2)}`}</span>
           </li>
         )
       })
