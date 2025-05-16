@@ -3,9 +3,9 @@
 :root {
   --color-one: #ed9444;
   --color-strong: #e85604;
-  --color-two: #135f83;
+  --color-two: rgb(19, 95, 131);
   --color-dark: #002a4d;
-  --color-light: #fbdfa3;
+  --color-light: #fbdfa2;
 }
 
 
@@ -61,11 +61,13 @@ button {
   background-color: var(--color-strong);
   padding: 6px 10px;
   border: none;
+  box-shadow: #002a4d 2px 2px;
 }
 
 button:hover {
   background-color: var(--color-light);
   color: var(--color-dark);
+  box-shadow: #002a4d 5px 5px;
 }
 
 /*main*/
@@ -108,12 +110,6 @@ button:hover {
 .main__section__figure__img--logo{
   width: 200px;
 }
-
-.main__section__figure__img--logo:hover{
-  width: 210px;
-}
-
-
 
 .main__section__div{
   display: flex;
@@ -215,15 +211,14 @@ button:hover {
 .main__section__products__cart-button{
   margin: auto;
   padding: 20px;
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
 }
 
 .main__section__products__cart-button:hover{
-  padding: 25px;
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
 }
 
 .main__section__products__cart--title{
@@ -258,3 +253,149 @@ button:hover {
   -o-border-radius: 10px;
 }
 
+/*----HEADER------*/
+
+.header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+
+.header__link{
+  filter: drop-shadow(2px 2px 2px rgba(19, 95, 131, 0.9));
+  -webkit-filter: drop-shadow(2px 2px 2px rgba(19, 95, 131, 0.9));
+}
+
+.header__link:hover{
+  transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+  margin-right: 10px;
+  filter: drop-shadow(6px 6px 5px rgba(19, 95, 131, 0.8));
+  -webkit-filter: drop-shadow(6px 6px 5px rgba(19, 95, 131, 0.8));
+}
+
+.header__box{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-right: 40px;
+}
+
+.header__box__nav__ul{
+  list-style: none;
+  display: flex;
+  margin-right: 10px;
+    filter: drop-shadow(2px 2px 2px rgba(19, 95, 131, 0.9));
+  -webkit-filter: drop-shadow(2px 2px 2px rgba(19, 95, 131, 0.9));
+}
+
+.header__box__nav__ul--link{
+  margin: 0px;
+  background-color: var(--color-light);
+  padding: 14px;
+}
+
+.header__box__nav__ul--link:first-child{
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.header__box__nav__ul--link:last-child{
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.header__box__nav__ul--link:hover{
+  background-color: var(--color-two);
+}
+
+.header__box__nav__ul--link a{
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: var(--color-dark);
+}
+
+.header__box__nav__ul--link:hover a {
+  color: var(--color-light);
+}
+
+.header__box__link{
+  padding: 7px;
+}
+
+.header__box__link:hover{
+  background-color: var(--color-two);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
+}
+
+/*----Footer-----*/
+
+.footer{
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: repeat(4, 60px);
+}
+
+.footer__section--link{
+  display: block;
+  text-decoration: none;
+  font-weight: bolder;
+  color: var(--color-strong);
+  margin: 10px;
+}
+
+.footer__section--link:visited{
+  color: #ed9444;
+}
+
+.footer__section--link:hover{
+  color: var(--color-light);
+  transform: scale(1.01);
+  -webkit-transform: scale(1.01);
+  -moz-transform: scale(1.01);
+  -ms-transform: scale(1.01);
+  -o-transform: scale(1.01);
+}
+
+.footer__section--title{
+  font-size: 2.3em;
+  color: var(--color-light);
+  margin: 5px;
+}
+
+.footer__section__link{
+  display: block;
+  margin-top: 10px;
+}
+
+.footer__section__link:hover{
+  transform: scale(1.2);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  -o-transform: scale(1.2);
+}
+
+.footer__section__link--icon{
+  filter: drop-shadow(2px 2px 2px rgba(19, 95, 131, 0.9));
+  -webkit-filter: drop-shadow(2px 2px 2px rgba(19, 95, 131, 0.9));
+}
+
+.footer__section__link--icon:hover{
+  filter: drop-shadow(6px 6px 5px rgba(19, 95, 131, 0.8));
+  -webkit-filter: drop-shadow(6px 6px 5px rgba(19, 95, 131, 0.8));
+}

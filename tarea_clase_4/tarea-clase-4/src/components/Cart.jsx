@@ -34,7 +34,6 @@ const Cart = ({ listOfItems, cantItems, total, setDisplayBoxes, displayBoxes })=
     </section>
   </div>
   
-
 }
 
 export default Cart
