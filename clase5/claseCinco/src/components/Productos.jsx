@@ -10,7 +10,7 @@ function Productos() {
 
   useEffect( ()=>{
 
-    fetch('https://682966586075e87073a662a1.mockapi.io/productos/electrodomesticos')
+    fetch('https://682966586075e87073a662a1.mockapi.io/productos/catalog')
       .then((respuesta)=>respuesta.json())
       .then((datos)=>{
         setProductos(datos)
@@ -38,7 +38,7 @@ function Productos() {
             textAlign: "center",
           }}>
           <h2>{producto.name}</h2>
-          <h4>{producto.product}</h4>
+          <h4>{producto.departament}</h4>
           <figure>
             <img src={producto.image} alt={producto.name} style={{maxWidth:'200px', maxHeight:'200px'}}/>
             <figcaption>{producto.description}</figcaption>
