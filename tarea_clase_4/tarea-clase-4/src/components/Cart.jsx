@@ -21,7 +21,7 @@ const Cart = ({ listOfItems, cantItems, total, setDisplayBoxes, displayBoxes })=
             if (cantItems[key] > 0){
               return (
                 <li key={key} className="main__section__products__cart--li">
-                  <span>{`${item.producto} * ${cantItems[key]} unidades`}</span>
+                  <span>{`${item.name} * ${cantItems[key]} unidades`}</span>
                 </li>
               )
             }

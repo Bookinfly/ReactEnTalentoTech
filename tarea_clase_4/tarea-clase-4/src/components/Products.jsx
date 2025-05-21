@@ -16,14 +16,14 @@ const Products =  ({listItems}) => {
 
   let [acu, setAcu] = useState(0)
 
-  let [displayBoxes, setDisplayBoxes] = useState({display:"block"})
+  let [displayBoxes, setDisplayBoxes] = useState({display:"flex"})
 
   const price = () => {
     setAcu(0)
     let x = 0
     listItems.forEach((item, key)=>{
       if(cant[key] > 0){
-        x += item.precio * cant[key]
+        x += item.price * cant[key]
       }
     })
     console.log(parseFloat(x.toFixed(2)))
@@ -57,23 +57,29 @@ const Products =  ({listItems}) => {
 
 
   return <div className="main__section__products">
-    {/** recorre la lista y en cada iteración crea un li */}
-    <ul className="main__section__products--list" style={displayBoxes}>
+    {/** recorre la lista y en cada iteración crea un div */}
+    <div className="main__section__products__list" style={displayBoxes}>
       { listItems.map( (item, key)=>{
         return (
-          <li key={key} className="main__section__products--item">
-            <span className="main__section__products--item-name">{ `${item.producto} : $${item.precio}` }</span>
-            <button  onClick={ () => {suma(key)} } className="main__section__products--item-button">+</button>
+          <div key={key} className="main__section__products__list--card">
+            <h3 className="card--name">{ `${item.name}` }</h3>
+            <h4>{item.price}</h4>
+            <figure >
+              <img src={item.image} alt={item.name} className="card__figure--img"/>
+            </figure>
+            <div className="buttons">
+              <button  onClick={ () => {suma(key)} } className="main__section__products--item-button">+</button>
             <button  onClick={ () => {resta(key)} }>-</button>
-            <span className="main__section__products--item-cant">{`Unidades ${cant[key]} `}</span>
-            <span className="main__section__products--item-precio">{`Total $${(cant[key]*item.precio).toFixed(2)}`}</span>
-          </li>
+            <span className="card--cant">{`Unidades ${cant[key]} `}</span>
+            <span className="card--precio">{`Total $${(cant[key]*item.price).toFixed(2)}`}</span>
+            </div>  
+          </div>
         )
       })
     }
-    </ul>
+    </div>
     <div className="main__section__products__div" style={displayBoxes}>
-      <span className="main__section__products__div--price">Carrito por un todal de ${acu}</span>
+      <span className="main__section__products__div--price">Carrito por un todal de ${acu.toFixed(2)}</span>
     </div>
     <Cart listOfItems={listItems} cantItems={cant} total={acu} setDisplayBoxes={setDisplayBoxes} displayBoxes={displayBoxes} ></Cart>
   </div>

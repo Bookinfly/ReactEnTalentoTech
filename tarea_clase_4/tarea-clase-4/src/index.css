@@ -140,13 +140,15 @@ button:hover {
 
 .main__section__products{
   display: flex;
-  flex-direction: column;
+  flex-flow: nowrap column;
   padding: 10px;
+  width: 100%;
 }
 
-.main__section__products--list{
-
+.main__section__products__list{
+  width: 100%;
   padding: 50px;
+  flex-flow: wrap row;
   color: var(--color-light);
   background-color: var(--color-dark);
   border-radius: 10px;
@@ -156,27 +158,38 @@ button:hover {
   -o-border-radius: 10px;
 }
 
-.main__section__products--item{
-  list-style: none;
-  margin: 5px;
+.main__section__products__list--card{
   display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: 200px;
+  justify-content: space-between;
+  margin: 5px;
+  padding: 10px;
   align-items:center;
+  border: var(--color-one) solid 2px;
 }
 
-.main__section__products--item-name{
+.card--name{
   text-transform: uppercase;
 }
 
-.main__section__products--item-cant{
+.card--cant{
   border: var(--color-light)  2px solid;
   padding: 4px;
 }
 
-.main__section__products--item-precio{
+.card--precio{
   border: var(--color-light)  2px solid;
   color: var(--color-dark);
   background-color: var(--color-light);
   padding: 4px;
+}
+
+.card__figure--img{
+  min-width: 200px;
+  max-width: 300px;
 }
 
 .main__section__products--item-button{
