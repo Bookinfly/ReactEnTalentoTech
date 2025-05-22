@@ -19,17 +19,17 @@ const Products =  ({listItems}) => {
   let [displayBoxes, setDisplayBoxes] = useState({display:"flex"})
 
   const price = () => {
-    setAcu(0)
     let x = 0
-    listItems.forEach((item, key)=>{
-      if(cant[key] > 0){
+    listItems.forEach((item, key) => {
+      if (cant[key] > 0) {
         x += item.price * cant[key]
       }
     })
-    console.log(parseFloat(x.toFixed(2)))
-    setAcu(x)
+    const total = parseFloat(x.toFixed(2))
+    if (acu !== total) {
+      setAcu(total)//seteo acumulador dentro de condicional
   }
-
+}
   /**
    * 
    * @param {*} key  un número a utilizar para marcar la position
@@ -38,22 +38,20 @@ const Products =  ({listItems}) => {
   const suma = (key)=> {
     let newArray = [...cant]
     newArray[key] = newArray[key] + 1
-    setCant(newArray)
-    price()
+    setCant(newArray) //evento en boton ejecuta setCant y lo que lleva que useEffect ejecute price() (evento)
   }
 
   const resta = (key)=> {
     let newArray = [...cant]
     if(newArray[key] > 0) {
         newArray[key] -= 1
-        setCant(newArray)
+        setCant(newArray) //evento en boton ejecuta setCant y lo que lleva que useEffect ejecute price() (evento)
     }
-    price()
   }
 
   useEffect(() => {
-    price();
-  }, [cant]);
+    price()
+  }, [cant])//si cambia cant, ejecuta price() y ejecuta setAcu (evento)
 
 
   return <div className="main__section__products">
