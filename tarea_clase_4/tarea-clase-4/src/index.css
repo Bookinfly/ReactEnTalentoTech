@@ -131,11 +131,12 @@ button:hover {
 }
 
 .main__section__h3{
+  align-self: flex-start;
   color: var(--color-one);
   font-size: 3em;
   text-align: center;
   margin: auto;
-  flex-shrink: 21;
+  flex-shrink: 2;
 }
 
 .main__section__products{
@@ -148,6 +149,7 @@ button:hover {
 .main__section__products__list{
   width: 100%;
   padding: 50px;
+  /*se hace flex dinamicamente*/
   flex-flow: wrap row;
   color: var(--color-light);
   background-color: var(--color-dark);
@@ -162,38 +164,80 @@ button:hover {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  flex-shrink: 0;
+  flex-shrink: 1;
   flex-basis: 200px;
+  max-width: 350px;
   justify-content: space-between;
   margin: 5px;
-  padding: 10px;
   align-items:center;
+  align-content: center;
   border: var(--color-one) solid 2px;
+}
+
+.card__figure{
+  background-color: #fff;
+  min-height: 250px;
+}
+
+.card__figure--img{
+  width: 100%;
 }
 
 .card--name{
   text-transform: uppercase;
+  display: block;
+  text-align: center;
+  padding: 10px;
+  background-color: var(--color-one);
+  color: var(--color-dark);
+  font-weight: bolder;
+  width: 100%;
 }
 
-.card--cant{
+.card--des{
+  padding: 10px;
+}
+
+.card--price{
+  font-size: 1.3em;
+  font-weight: bold;
+  padding: 20px;
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+.card__box{
+  display: flex;
+  width: 100%;
+  padding: 10px;  margin-top: 20px;
+}
+
+.card__box--button2{
+  border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+.card__box--cant{
   border: var(--color-light)  2px solid;
   padding: 4px;
+  flex-grow: 1;
+  flex-shrink: 1;
+  background-color: var(--color-light);
+  color: var(--color-dark);
 }
 
-.card--precio{
+.card__box--precio{
   border: var(--color-light)  2px solid;
   color: var(--color-dark);
   background-color: var(--color-light);
   padding: 4px;
-}
-
-.card__figure--img{
-  min-width: 200px;
-  max-width: 300px;
-}
-
-.main__section__products--item-button{
-  margin-left: auto;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .main__section__products__div{
@@ -207,10 +251,6 @@ button:hover {
   -o-border-radius: 10px;
   margin: 10px auto;
 }
-
-
-
-
 
 /*main ver carrito*/
 

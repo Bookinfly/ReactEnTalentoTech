@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import Products from "./Products"
 
-const Main = () => {
+const MainCart = () => {
 
   const [productos, setProductos] = useState([])
   const [cargando, setCargando] = useState(true);
@@ -83,4 +83,4 @@ const Main = () => {
   )
 }
 
-export default Main;
+export default MainCart;

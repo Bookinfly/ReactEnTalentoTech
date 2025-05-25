@@ -10,7 +10,7 @@ function Productos() {
 
   useEffect( ()=>{
 
-    fetch('https://682966586075e87073a662a1.mockapi.io/productos/catalog')
+    fetch('https://682966586075e87073a662a1.mockapi.io/productos/catalog6')
       .then((respuesta)=>respuesta.json())
       .then((datos)=>{
         setProductos(datos)

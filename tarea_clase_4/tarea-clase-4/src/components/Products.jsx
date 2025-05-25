@@ -60,16 +60,18 @@ const Products =  ({listItems}) => {
       { listItems.map( (item, key)=>{
         return (
           <div key={key} className="main__section__products__list--card">
-            <h3 className="card--name">{ `${item.name}` }</h3>
-            <h4>{item.price}</h4>
-            <figure >
+            <figure className="card__figure">
               <img src={item.image} alt={item.name} className="card__figure--img"/>
             </figure>
-            <div className="buttons">
-              <button  onClick={ () => {suma(key)} } className="main__section__products--item-button">+</button>
-            <button  onClick={ () => {resta(key)} }>-</button>
-            <span className="card--cant">{`Unidades ${cant[key]} `}</span>
-            <span className="card--precio">{`Total $${(cant[key]*item.price).toFixed(2)}`}</span>
+            <h3 className="card--name">{ `${item.name}` }</h3>
+            <p className="card--des">{item.description}</p>
+            <h4 className="card--price">${item.price}</h4>
+            <div className="card__box">
+                          <button  onClick={ () => {resta(key)} } className="card__box--button2">-</button>
+
+              <button  onClick={ () => {suma(key)} } className="card__box--button1">+</button>
+            <span className="card__box--cant">{`Unidades ${cant[key]} `}</span>
+            <span className="card__box--precio">{`Total $${(cant[key]*item.price).toFixed(2)}`}</span>
             </div>  
           </div>
         )
