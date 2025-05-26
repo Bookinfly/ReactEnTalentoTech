@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react"
 import Products from "./Products"
+import { useCart } from './context/CartContext'
 
 const MainCart = () => {
+  const { cartData, setCartData } = useCart();
 
-  const [productos, setProductos] = useState([])
+  // const [productos, setProductos] = useState([]) //ahora es cartData.listOfItems
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
 
@@ -12,7 +14,10 @@ const MainCart = () => {
       .then((respuesta) => respuesta.json())
       .then((datos) => {
         if (Array.isArray(datos) && datos.length > 0) { // Verifica que datos no es null y tiene elementos
-          setProductos(datos)
+          let cartDataTemp = {...cartData}
+          cartDataTemp.listOfItems = datos
+          cartDataTemp.cantItems = datos.map(() => 0);  // inicializo acá
+          setCartData(cartDataTemp)
         } else {
           setError("No se encontraron productos.")
         }
@@ -45,7 +50,6 @@ const MainCart = () => {
     )
 
   return (
-    //aca si falla el fetch el array queda vacio y trae un error porque productos.map() ya no es una función valida y falla react, imprime solo el color del body, ningún catch lo atrapa
     <main className="main">
       <section className="main__section">
         <h1 className="main__section__title">
@@ -72,8 +76,8 @@ const MainCart = () => {
         </div>
       </section>
       <section className="main__section">
-        {productos.length > 0 ? (
-          <Products listItems={productos} />) : (
+        {cartData.listOfItems.length > 0 ? (
+          <Products  />) : (
           <p style={{ fontWeight: "bold", color: "#e85604" }}>
             No hay productos disponibles por el momento.
           </p>

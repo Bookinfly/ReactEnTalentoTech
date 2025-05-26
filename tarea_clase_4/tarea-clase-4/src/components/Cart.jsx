@@ -1,7 +1,9 @@
 import React, {useState} from "react";
+import { useCart } from './context/CartContext'
 
 
-const Cart = ({ listOfItems, cantItems, total, setDisplayBoxes, displayBoxes })=> {
+const Cart = ({ setDisplayBoxes, displayBoxes })=> {
+  const { cartData } = useCart();
 
   let [displaySec, setDisplaySec] = useState({display:"none"})
 
@@ -17,11 +19,11 @@ const Cart = ({ listOfItems, cantItems, total, setDisplayBoxes, displayBoxes })=
       <h2 className="main__section__products__cart--title">Productos</h2>
       <ol id="compras" className="main__section__products__cart__ol">
         {
-          listOfItems.map(( item, key )=>{
-            if (cantItems[key] > 0){
+          cartData.listOfItems.map(( item, key )=>{
+            if (cartData.cantItems[key] > 0){
               return (
                 <li key={key} className="main__section__products__cart--li">
-                  <span>{`${item.name} * ${cantItems[key]} unidades`}</span>
+                  <span>{`${item.name} * ${cartData.cantItems[key]} unidades`}</span>
                 </li>
               )
             }
@@ -29,7 +31,7 @@ const Cart = ({ listOfItems, cantItems, total, setDisplayBoxes, displayBoxes })=
         }
       </ol>
       <div>
-              <h4 className="main__section__products__cart--total">Total: ${total}</h4>
+              <h4 className="main__section__products__cart--total">Total: ${cartData.total}</h4>
       </div>
     </section>
   </div>

@@ -1,4 +1,4 @@
-import React, { Profiler } from 'react'
+import React, { Profiler } from 'react'//ya no recuerdo que era Profiler revisar
 import Header from "./components/Header"
 import MainCart from "./components/MainCart"
 import Footer from "./components/Footer"
@@ -8,13 +8,14 @@ import Contact from './components/Contact'
 import Cookies from './components/cookies'
 import Politicas from './components/Politicas'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-
+import { CartProvider } from './components/context/CartContext'
 
 
 function App() {
 
+
   return (
-    <div>
+    <CartProvider>
       <Header />
       <Routes>
         <Route path='/' element={<MainCart />} />{/**va a haber que pasar datos por la ruta */}
@@ -25,7 +26,7 @@ function App() {
         <Route path='/politicas' element={<Politicas />} />
       </Routes>
       <Footer />
-    </div>
+    </CartProvider>
   )
 }
 
