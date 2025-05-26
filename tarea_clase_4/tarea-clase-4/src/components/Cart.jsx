@@ -2,20 +2,21 @@ import React, {useState} from "react";
 import { useCart } from './context/CartContext'
 
 
-const Cart = ({ setDisplayBoxes, displayBoxes })=> {
-  const { cartData } = useCart();
+const Cart = ()=> {
+  const { cartData, setCartData } = useCart();
 
-  let [displaySec, setDisplaySec] = useState({display:"none"})
+  const limpiar = ()=> {
+    let cartDataTemp = {...cartData}
+    cartDataTemp.cantItems = cartData.cantItems.map(() => 0)
+    cartDataTemp.total = 0.00
+    setCartData(cartDataTemp)
+  }
 
-  const mostrar = () => {
-    setDisplaySec({ display: "block" }) // Modifica el estado sin `useEffect`
-    setDisplayBoxes({ display: "none"})
-  };
+  const compra = ()=> alert("Usted realizo una compra FICTICIA por $" + cartData.total + " imaginarios")
 
 
   return <div>
-    <button onClick={ mostrar } style={displayBoxes} className="main__section__products__cart-button">Ver Carrito</button>
-    <section id="carrito" style={displaySec} className="main__section__products__cart">
+    <section id="carrito" className="main__section__products__cart">
       <h2 className="main__section__products__cart--title">Productos</h2>
       <ol id="compras" className="main__section__products__cart__ol">
         {
@@ -23,7 +24,7 @@ const Cart = ({ setDisplayBoxes, displayBoxes })=> {
             if (cartData.cantItems[key] > 0){
               return (
                 <li key={key} className="main__section__products__cart--li">
-                  <span>{`${item.name} * ${cartData.cantItems[key]} unidades`}</span>
+                  <span>{`${item.name} * ${cartData.cantItems[key]} unidades`}</span><span>{`- Con un valor de ${item.price} por unidad`}</span>
                 </li>
               )
             }
@@ -33,6 +34,11 @@ const Cart = ({ setDisplayBoxes, displayBoxes })=> {
       <div>
               <h4 className="main__section__products__cart--total">Total: ${cartData.total}</h4>
       </div>
+      <div>
+        <button onClick={ limpiar } className="main__section__products__cart-button">Limpiar Carrito</button>
+        <button onClick={ compra } className="main__section__products__cart-button">Comprar</button>
+      </div>
+
     </section>
   </div>
   

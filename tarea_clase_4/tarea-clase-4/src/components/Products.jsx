@@ -84,7 +84,7 @@ const Products =  () => {
     <div className="main__section__products__div" style={displayBoxes}>
       <span className="main__section__products__div--price">Carrito por un todal de ${cartData.total.toFixed(2)}</span>
     </div>
-    <Cart  setDisplayBoxes={setDisplayBoxes} displayBoxes={displayBoxes} ></Cart>
+    {/* <Cart  setDisplayBoxes={} displayBoxes={displayBoxes} ></Cart> */}
   </div>
 }
 

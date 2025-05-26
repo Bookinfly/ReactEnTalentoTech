@@ -256,14 +256,17 @@ button:hover {
 
 .main__section__products__cart{
   display: flex;
+  flex-direction: column;
+  background-color: var(--color-two);
   align-items: center;
   justify-items: center;
   min-height: 100vh;
 }
 
 .main__section__products__cart-button{
-  margin: auto;
+  margin: 20px;
   padding: 20px;
+  font-weight: bold;
 }
 
 .main__section__products__cart-button:hover{
@@ -285,8 +288,8 @@ button:hover {
   flex-direction: column;
   background-color: var(--color-light);
   width: 80vw;
-  gap: 5px;
-  padding: 4px;
+  gap: 2px;
+  padding: 2px;
 }
 
 .main__section__products__cart--li{

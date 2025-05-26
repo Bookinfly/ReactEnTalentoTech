@@ -16,7 +16,7 @@ const MainCart = () => {
         if (Array.isArray(datos) && datos.length > 0) { // Verifica que datos no es null y tiene elementos
           let cartDataTemp = {...cartData}
           cartDataTemp.listOfItems = datos
-          cartDataTemp.cantItems = datos.map(() => 0);  // inicializo acá
+          cartDataTemp.cantItems = datos.map(() => 0)  // inicializo acá
           setCartData(cartDataTemp)
         } else {
           setError("No se encontraron productos.")
