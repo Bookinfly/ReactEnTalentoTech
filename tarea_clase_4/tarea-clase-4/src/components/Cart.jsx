@@ -35,6 +35,7 @@ const Cart = ()=> {
               <h4 className="main__section__products__cart--total">Total: ${cartData.total}</h4>
       </div>
       <div>
+        {/**reparar metodologia BEM en botones */}
         <button onClick={ limpiar } className="main__section__products__cart-button">Limpiar Carrito</button>
         <button onClick={ compra } className="main__section__products__cart-button">Comprar</button>
       </div>

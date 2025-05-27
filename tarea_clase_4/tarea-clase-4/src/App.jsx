@@ -9,6 +9,7 @@ import Cookies from './components/cookies'
 import Politicas from './components/Politicas'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { CartProvider } from './components/context/CartContext'
+import ProductoDetalle from './components/ProductoDetalle'
 
 
 function App() {
@@ -19,11 +20,12 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<MainCart />} />{/**va a haber que pasar datos por la ruta */}
-        <Route path='/cart' element={<Cart />} />{/**Problemas con los props del cart*/}
+        <Route path='/cart' element={<Cart />} />
         <Route path='/about' element={<About />} />
         <Route path='/contact' element={<Contact />} />
         <Route path='/cookies' element={<Cookies />} />
         <Route path='/politicas' element={<Politicas />} />
+        <Route path='/detalle/:id' element={<ProductoDetalle />} />
       </Routes>
       <Footer />
     </CartProvider>

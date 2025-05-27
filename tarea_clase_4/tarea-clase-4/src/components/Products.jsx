@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react"
 import Cart from "./Cart"
 import { useCart } from './context/CartContext'
+import { Link } from 'react-router-dom'
+
 
 
 /**
@@ -13,8 +15,6 @@ import { useCart } from './context/CartContext'
 const Products =  () => {
   const { cartData, setCartData } = useCart();
 
-
-  let [displayBoxes, setDisplayBoxes] = useState({display:"flex"})
 
   const price = () => {
     let x = 0
@@ -59,7 +59,7 @@ const Products =  () => {
 
   return <div className="main__section__products">
     {/** recorre la lista y en cada iteración crea un div */}
-    <div className="main__section__products__list" style={displayBoxes}>
+    <div className="main__section__products__list" >
       { cartData.listOfItems.map( (item, key)=>{
         return (
           <div key={key} className="main__section__products__list--card">
@@ -69,22 +69,24 @@ const Products =  () => {
             <h3 className="card--name">{ `${item.name}` }</h3>
             <p className="card--des">{item.description}</p>
             <h4 className="card--price">${item.price}</h4>
-            <div className="card__box">
-                          <button  onClick={ () => {resta(key)} } className="card__box--button2">-</button>
+            <Link to={`/detalle/${item.id}`} className="button-link"> Ver Detalle </Link>
 
-              <button  onClick={ () => {suma(key)} } className="card__box--button1">+</button>
-            <span className="card__box--cant">{`Unidades ${cartData.cantItems[key]} `}</span>
-            <span className="card__box--precio">{`Total $${(cartData.cantItems[key]*item.price).toFixed(2)}`}</span>
+            <div className="card__box">
+            <button  onClick={ () => {resta(key)} } className="card__box--button2">-</button>
+            <span className=" card__box--cant">{`Unidades ${cartData.cantItems[key]} `}</span>
+            <span className=" card__box--precio">{`Total $${(cartData.cantItems[key]*item.price).toFixed(2)}`}</span>
+            <button  onClick={ () => {suma(key)} } className="card__box--button1">+</button>
             </div>  
           </div>
         )
       })
     }
     </div>
-    <div className="main__section__products__div" style={displayBoxes}>
+    <div className="main__section__products__div" >
       <span className="main__section__products__div--price">Carrito por un todal de ${cartData.total.toFixed(2)}</span>
+      <Link to={'/cart'} className="button-link main__section__products__div--link" > Ir al carrito </Link>    
     </div>
-    {/* <Cart  setDisplayBoxes={} displayBoxes={displayBoxes} ></Cart> */}
+
   </div>
 }
 

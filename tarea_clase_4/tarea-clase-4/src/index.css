@@ -64,12 +64,46 @@ button {
   box-shadow: #002a4d 2px 2px;
 }
 
-button:hover {
+.button-link{
+  text-align: center;
+  background-color: var(--color-strong);
+  padding: 6px 10px;
+  border: none;
+  box-shadow: #002a4d 2px 2px;
+  text-decoration: none;
+  color: var(--color-dark);
+  font-weight: bold;
+  margin: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+
+button:hover{
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  box-shadow: #002a4d 5px 5px;
   background-color: var(--color-light);
   color: var(--color-dark);
   box-shadow: #002a4d 5px 5px;
 }
 
+.button-link:hover{
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  box-shadow: #002a4d 5px 5px;
+  background-color: var(--color-light);
+  color: var(--color-dark);
+  box-shadow: #002a4d 5px 5px;
+  transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+}
 /*main*/
 
 .main__section {
@@ -149,7 +183,7 @@ button:hover {
 .main__section__products__list{
   width: 100%;
   padding: 50px;
-  /*se hace flex dinamicamente*/
+  display: flex;  
   flex-flow: wrap row;
   color: var(--color-light);
   background-color: var(--color-dark);
@@ -222,6 +256,21 @@ button:hover {
   border-top-left-radius: 10px;
 }
 
+.card__box--button1{
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card__box--button2:hover{
+  background-color: var(--color-two);
+  color: var(--color-strong);
+}
+
+.card__box--button1:hover{
+  background-color: var(--color-two);
+  color: var(--color-strong);
+}
+
 .card__box--cant{
   border: var(--color-light)  2px solid;
   padding: 4px;
@@ -236,8 +285,6 @@ button:hover {
   color: var(--color-dark);
   background-color: var(--color-light);
   padding: 4px;
-  border-bottom-right-radius: 10px;
-  border-top-right-radius: 10px;
 }
 
 .main__section__products__div{
@@ -250,6 +297,13 @@ button:hover {
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
   margin: 10px auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.main__section__products__div--link{
+  margin-top: 40px;
+  flex-shrink: 2;
 }
 
 /*main ver carrito*/
