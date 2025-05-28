@@ -64,6 +64,26 @@ button {
   box-shadow: #002a4d 2px 2px;
 }
 
+form{
+  background-color: var(--color-dark);
+  width: 80%;
+  margin: 50px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  min-height: 60vh;
+  justify-content:space-between
+}
+
+fieldset{
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 10px;
+}
+
 .button-link{
   text-align: center;
   background-color: var(--color-strong);

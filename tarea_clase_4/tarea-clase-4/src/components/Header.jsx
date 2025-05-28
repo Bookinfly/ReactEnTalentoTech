@@ -11,6 +11,7 @@ const Header = ()=> {
             <li className="header__box__nav__ul--link"><Link to="./">Productos</Link></li>
             <li className="header__box__nav__ul--link"><Link to="./about">Nosotros</Link></li>
             <li className="header__box__nav__ul--link"><Link to="./contact">Contacto</Link></li>
+            <li className="header__box__nav__ul--link"><Link to="./loguin">Loguin</Link></li>
           </ul>
         </nav>
 
