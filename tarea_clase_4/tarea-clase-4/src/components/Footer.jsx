@@ -8,6 +8,7 @@ const Footer = ()=>{
       <section className="footer__section">
         <Link to="/politicas" className="footer__section--link">Politicas de uso</Link>
         <Link to="/cookies" className="footer__section--link">Cookies</Link>
+        <Link to="/admin" className="footer__section--link">Admin</Link>
       </section>
       <section className="footer__section">
         <h5 className="footer__section--title">Redes</h5>

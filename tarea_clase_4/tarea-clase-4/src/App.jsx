@@ -7,8 +7,10 @@ import About from './components/About'
 import Contact from './components/Contact'
 import Cookies from './components/cookies'
 import Politicas from './components/Politicas'
+import Admin from './components/Admin'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { CartProvider } from './components/context/CartContext'
+import { AuthProvider } from './components/context/AuthContext'
 import ProductoDetalle from './components/ProductoDetalle'
 import Loguin from './components/Loguin'
 import RutaProtegida from './components/RutaProtegida'
@@ -16,10 +18,9 @@ import RutaProtegida from './components/RutaProtegida'
 
 function App() {
 
-  let [isAuthenticated, setIsAuthenticated] = useState(true)
-
   return (
-    <CartProvider>
+    <AuthProvider>
+      <CartProvider>
       <Header />
       <Routes>
         <Route path='/' element={<MainCart />} />{/**va a haber que pasar datos por la ruta */}
@@ -31,13 +32,21 @@ function App() {
         <Route path='/loguin' element={<Loguin />} />
 
         <Route path='/cart' element={
-          <RutaProtegida isAuthenticated={isAuthenticated}>
+          <RutaProtegida >
             <Cart />
           </RutaProtegida>
-          } />
+        }/>
+
+        <Route path='/admin' element={
+          <RutaProtegida >
+          <Admin />
+          </RutaProtegida>
+      } />
+
       </Routes>
       <Footer />
     </CartProvider>
+    </AuthProvider>
   )
 }
 
