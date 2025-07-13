@@ -15,8 +15,9 @@ const MainCart = () => {
       .then((datos) => {
         if (Array.isArray(datos) && datos.length > 0) { // Verifica que datos no es null y tiene elementos
           let cartDataTemp = {...cartData}
-          cartDataTemp.listOfItems = datos
-          cartDataTemp.cantItems = datos.map(() => 0)  // inicializo acá
+          cartDataTemp.listOfItems = datos //esté es el catalogo!!!!!!!!!!!!!!!!
+          cartDataTemp.cantItems = datos.map(() => 0)  // arrepientete de tus pecados
+          //cartDataTemp.cantItems = es igual a una lista en posiciones paralelas a las de cartData.listOfItems, guarda las unidades ingresadas al carrito 
           setCartData(cartDataTemp)
         } else {
           setError("No se encontraron productos.")

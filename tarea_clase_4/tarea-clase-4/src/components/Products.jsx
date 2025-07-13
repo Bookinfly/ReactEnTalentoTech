@@ -57,7 +57,7 @@ const Products =  () => {
 }, [JSON.stringify(cartData.cantItems)]); // Usar JSON.stringify para la comparación
 
 
-  return <div className="main__section__products">
+  return (<div className="main__section__products">
     {/** recorre la lista y en cada iteración crea un div */}
     <div className="main__section__products__list" >
       { cartData.listOfItems.map( (item, key)=>{
@@ -87,7 +87,7 @@ const Products =  () => {
       <Link to={'/cart'} className="button-link main__section__products__div--link" > Ir al carrito </Link>    
     </div>
 
-  </div>
+  </div>)
 }
 
 export default Products

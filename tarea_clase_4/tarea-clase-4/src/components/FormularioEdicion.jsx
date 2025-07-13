@@ -1,17 +1,24 @@
-import { useState } from "react"
+import React, { useState, useContext } from 'react'
 
-const CrearProducto = ( {onAgregar} )=>{
+import { ProductsContext } from './context/ProductsCRUDContext'
+
+function FormularioProducto({ productoInicial = {}, modo = 'agregar', onCerrar } ) {
   const [producto, setProducto] = useState({
-    name : "",
-    price : "",
-    description : "",
-    departament : "",
-    image : ""
+    name: "",
+    price: "",
+    description: "",
+    departament: "",
+    image: "",
+    ...productoInicial // Spread para asegurar todas las claves
   })
 
+  const { agregarProducto, editarProducto } = useContext(ProductsContext)//no estan ni la lista productos, ni la función de eliminarProducto
+
   const handleChange = (e) => {
+
     const { name, value } = e.target
-    setProducto({...producto, [name]: value})
+    setProducto({ ...producto, [name]:value})
+
   }
 
   const [errores, setErrores] = useState({})
@@ -22,7 +29,7 @@ const CrearProducto = ( {onAgregar} )=>{
     if (!producto.name.trim()) {
       nuevosErrores.name = 'El nombre es obligatorio'
     }
-    if (!producto.price || producto.price <= 0) {
+    if (!producto.price || Number(producto.price) <= 0) {
       nuevosErrores.price = 'El precio debe ser mayor a 0'
     }
     if (!producto.description.trim() || producto.description.length < 10) {
@@ -38,11 +45,17 @@ const CrearProducto = ( {onAgregar} )=>{
     return Object.keys(nuevosErrores).length === 0
   }
 
-
   const handleSubmit = (e) => {
+
     e.preventDefault()
     if (validarFormulario()) {
-      onAgregar(producto)
+      if (modo === 'agregar') {
+        agregarProducto({ ...producto})
+      } else {
+        editarProducto(producto)
+      }
+      onCerrar()
+
       setProducto(
         { name: "",
           price:"",
@@ -51,6 +64,7 @@ const CrearProducto = ( {onAgregar} )=>{
           image:"" }
       )
       setErrores({})
+      
     }
   }
 
@@ -66,7 +80,6 @@ const CrearProducto = ( {onAgregar} )=>{
           name="name" 
           value={producto.name} 
           onChange={handleChange} 
-          required 
           placeholder="Leche larga vida La Serenisima 1L"/>
         </label>
         {errores.name && <p style={{ color: 'red' }}>{errores.name}</p>}
@@ -78,7 +91,6 @@ const CrearProducto = ( {onAgregar} )=>{
             id="price" 
             value={producto.price} 
             onChange={handleChange} 
-            require 
             placeholder="3000" 
             min={0}/>
         </label>
@@ -90,12 +102,10 @@ const CrearProducto = ( {onAgregar} )=>{
             id="description" 
             value={producto.description} 
             onChange={handleChange} 
-            required 
-            placeholder="Cartón de lece de 1L pasteurizada...">
+            placeholder="Cartón de leche de 1L...">
           </textarea>
         </label>
         {errores.description && <p style={{ color: 'red' }}>{errores.description}</p>}
-
 
         <label htmlFor="departament">Departamento: 
           <input 
@@ -104,11 +114,9 @@ const CrearProducto = ( {onAgregar} )=>{
             id="departament" 
             value={producto.departament} 
             onChange={handleChange}
-            required 
             placeholder="almacén"/>
         </label>
         {errores.departament && <p style={{ color: 'red' }}>{errores.departament}</p>}
-
 
         <label htmlFor="image">Imagen: 
           <input 
@@ -117,16 +125,16 @@ const CrearProducto = ( {onAgregar} )=>{
             id="image"
             value={producto.image}
             onChange={handleChange}
-            required
             placeholder="www.imagenesbonitas.com/carton-de-leche"
           />
         </label>
         {errores.image && <p style={{ color: 'red' }}>{errores.image}</p>}
 
       </fieldset>
-      <button type="submit">Agregar Producto</button>
+
+      <button type='submit'>{modo === 'agregar' ? 'Agregar' : 'Actualizar'}</button>
     </form>
   )
 }
 
-export default CrearProducto
+export default FormularioProducto

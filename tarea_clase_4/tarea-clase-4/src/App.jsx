@@ -1,4 +1,4 @@
-import React, { Profiler, useState } from 'react'//ya no recuerdo que era Profiler revisar
+import React, { Profiler } from 'react'//ya no recuerdo que era Profiler revisar
 import Header from "./components/Header"
 import MainCart from "./components/MainCart"
 import Footer from "./components/Footer"
@@ -14,6 +14,7 @@ import { AuthProvider } from './components/context/AuthContext'
 import ProductoDetalle from './components/ProductoDetalle'
 import Loguin from './components/Loguin'
 import RutaProtegida from './components/RutaProtegida'
+import { ProductsProvider } from './components/context/ProductsCRUDContext'
 
 
 function App() {
@@ -21,30 +22,32 @@ function App() {
   return (
     <AuthProvider>
       <CartProvider>
-      <Header />
-      <Routes>
-        <Route path='/' element={<MainCart />} />{/**va a haber que pasar datos por la ruta */}
-        <Route path='/about' element={<About />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/cookies' element={<Cookies />} />
-        <Route path='/politicas' element={<Politicas />} />
-        <Route path='/detalle/:id' element={<ProductoDetalle />} />
-        <Route path='/loguin' element={<Loguin />} />
+        <ProductsProvider>
+          <Header />
+          <Routes>
+            <Route path='/' element={<MainCart />} />{/**va a haber que pasar datos por la ruta */}
+            <Route path='/about' element={<About />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='/cookies' element={<Cookies />} />
+            <Route path='/politicas' element={<Politicas />} />
+            <Route path='/detalle/:id' element={<ProductoDetalle />} />
+            <Route path='/loguin' element={<Loguin />} />
 
-        <Route path='/cart' element={
-          <RutaProtegida >
-            <Cart />
-          </RutaProtegida>
-        }/>
+            <Route path='/cart' element={
+              <RutaProtegida >
+                <Cart />
+              </RutaProtegida>
+            }/>
 
-        <Route path='/admin' element={
-          <RutaProtegida >
-          <Admin />
-          </RutaProtegida>
-      } />
+            <Route path='/admin' element={
+              <RutaProtegida >
+              <Admin />
+              </RutaProtegida>
+          } />
 
-      </Routes>
-      <Footer />
+        </Routes>
+        <Footer />
+      </ProductsProvider>
     </CartProvider>
     </AuthProvider>
   )

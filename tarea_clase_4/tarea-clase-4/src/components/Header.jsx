@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const Header = ()=> {
   return (
     <header className="header">
-      <Link to="/" className="header__link"><img src="./images/logo.png" alt="logo" style={{width:"60px"}} className="header__linl--logo"/></Link> //revisar clase
+      <Link to="/" className="header__link"><img src="./images/logo.png" alt="logo" style={{width:"60px"}} className="header__linl--logo"/></Link> {/*revisar clase*/}
       <div className="header__box">
         <nav className="header__box__nav">
           <ul className="header__box__nav__ul">

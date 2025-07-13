@@ -1,43 +1,100 @@
-import React from "react"
-import CrearProducto from "./CrearProducto"
+import React, { useState, useContext } from "react"
+import FormularioEdicion from "./FormularioEdicion"
+// import { useCart } from "./context/CartContext"
+import { Link } from 'react-router-dom'
+import { ProductsContext } from "./context/ProductsCRUDContext"
+
 
 const Admin = ()=> {
-  const agregarProducto = async (producto) => {
-    try {
-      const respuesta = await fetch('https://682966586075e87073a662a1.mockapi.io/productos/catalog', {
-        method: 'POST',
 
-        headers: {
-          'Content-Type': 'application/json',
-        },
+  const { productos = [] } = useContext(ProductsContext)
 
-        body: JSON.stringify(producto),
-
-      })
-
-      if (!respuesta.ok) {
-        throw new Error('Error al agregar el producto')
-      }
-
-    const data = await respuesta.json()
-
-    console.log('Producto agregado: ', data)
-
-    alert('Producto agregado correctamente')
-    } catch (error) {
-
-      console.log(error.message)
-      alert('Hubo un error al agregar el producto.')
-    }
+  // const { cartData, setCartData } = useCart();
+  
+  const onCerrar = ()=>{
+    alert("onCerrar no hace nada todavía")
   }
+
+  const [editar, setEditar ] = useState(false)
+
+  const [flagRenderForm, setFlagRenderForm ] = useState(false)
+
+  const [seleccionadoPorID, setSeleccionadoPorID ] = useState({})
+
+  const cambiarProducto = (ident)=> {//ident es el id del seleccionado
+    setSeleccionadoPorID(
+      productos.find(producto => producto.id === ident)//buscamos el elemento que coincida
+    )
+    console.log(seleccionadoPorID)
+    setFlagRenderForm(true)
+    setEditar(true)
+    console.log(flagRenderForm)
+  }
+
+  const volverAtras = () => {
+  setFlagRenderForm(false)
+  setEditar(false)
+  setSeleccionadoPorID({})
+}
+
+  const nuevoProducto = ()=> {
+    setEditar(false)
+    setSeleccionadoPorID({})
+    setFlagRenderForm(true)
+  }
+
+<button onClick={volverAtras} >Volver a la lista</button>
 
   return (
     <div > 
-      <h1>Gestión de productos</h1>
-      <CrearProducto onAgregar={agregarProducto}/>
+
+          <section className="main__section__products">
+            <h1>Gestión de productos</h1>
+            {!flagRenderForm&&<button onClick={nuevoProducto} >Agregar Producto</button>}
+
+        {/** recorre la lista y en cada iteración crea un div */}
+        <div className="main__section__products__list" >
+          { !flagRenderForm&&productos.map( (item, key)=>{
+            return (
+              <div key={key} className="main__section__products__list--card">
+                <figure className="card__figure">
+                  <img src={item.image} alt={item.name} className="card__figure--img"/>
+                </figure>
+                <h3 className="card--name">{ `${item.name}` }</h3>
+                <p className="card--des">{item.description}</p>
+                <h4 className="card--price">${item.price}</h4>
+                <h2 className="card--name">${item.id}</h2>
+                <Link to={`/detalle/${item.id}`} className="button-link"> Ver Detalle </Link>
+                <button onClick={()=>cambiarProducto(item.id)}>Editar</button>
+              </div>
+            )
+          })
+        }
+      {
+              flagRenderForm&&editar?<div className="main__section__products__list--card">
+                <figure className="card__figure">
+                  <img src={seleccionadoPorID.image} alt={seleccionadoPorID.name} className="card__figure--img"/>
+                </figure>
+                <h3 className="card--name">{ `${seleccionadoPorID.name}` }</h3>
+                <p className="card--des">{seleccionadoPorID.description}</p>
+                <h4 className="card--price">${seleccionadoPorID.price}</h4>
+                <h2 className="card--name">${seleccionadoPorID.id}</h2>
+                <Link to={`/detalle/${seleccionadoPorID.id}`} className="button-link"> Ver Detalle </Link>
+                <button onClick={()=>cambiarProducto(seleccionadoPorID.id)}>Editar</button>
+              </div>:<></>
+      }
+        </div>
+      </section>
+      {/* <CrearProducto onAgregar={agregarProducto}/> */}
+      { 
+        flagRenderForm&&<div>
+        <FormularioEdicion onCerrar={onCerrar} productoInicial={editar===true?seleccionadoPorID:{}} modo={editar===true?"editar":"agregar"}/>
+        <button onClick={volverAtras} className="button-back">Volver a la lista</button>
+        </div>
+      }
+      
     </div>)
   
   }
-
 
 export default Admin
