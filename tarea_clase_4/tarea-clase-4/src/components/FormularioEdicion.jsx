@@ -7,7 +7,7 @@ import { ProductsContext } from './context/ProductsCRUDContext'//Contexto de pro
  * @param {* un objeto que representa un producto, un string para conocer el modo, una función de cerrar} param0 
  * @returns un formulario adaptable según el modo
  */
-function FormularioProducto({ productoInicial = {}, modo = 'agregar', onCerrar } ) {
+function FormularioProducto({ productoInicial = {}, modo = 'agregar', onCerrar , actualizarCard} ) {
   //crea un estado de producto, establece un formato y le adiciona productoInicial
   const [producto, setProducto] = useState({
     name: "",
@@ -67,6 +67,7 @@ function FormularioProducto({ productoInicial = {}, modo = 'agregar', onCerrar }
       )
       } else {//de no ser modo agregar asume que es edtar
         editarProducto(producto)//actualiza tanto contexto como BD
+        actualizarCard(producto)
       }
       onCerrar()//esa función que debería cerrar un modal o algo que nos trajimos
       setErrores({})//limpia errores
