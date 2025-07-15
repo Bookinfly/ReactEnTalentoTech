@@ -1,1 +1,0 @@
-El carrito y el catálogo son listas dentro de un objeto/array, necesito separar responsabilidades porque es un dolor de cabeza.

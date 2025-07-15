@@ -1,8 +1,14 @@
 import React, { useState, useContext } from 'react'
 
-import { ProductsContext } from './context/ProductsCRUDContext'
+import { ProductsContext } from './context/ProductsCRUDContext'//Contexto de productos en local con el CRUD (realmente no tiene el Read lo consume del contexto del carrito)
 
+/**Componente del formulario de modificación, eliminación y carga backoffice
+ * 
+ * @param {* un objeto que representa un producto, un string para conocer el modo, una función de cerrar} param0 
+ * @returns un formulario adaptable según el modo
+ */
 function FormularioProducto({ productoInicial = {}, modo = 'agregar', onCerrar } ) {
+  //crea un estado de producto, establece un formato y le adiciona productoInicial
   const [producto, setProducto] = useState({
     name: "",
     price: "",
@@ -11,18 +17,18 @@ function FormularioProducto({ productoInicial = {}, modo = 'agregar', onCerrar }
     image: "",
     ...productoInicial // Spread para asegurar todas las claves
   })
+  /**producto es  productoInicial{} más un formateo sí le falta alguna propiedad al {} o está vacio */
 
-  const { agregarProducto, editarProducto } = useContext(ProductsContext)//no estan ni la lista productos, ni la función de eliminarProducto
+  const { agregarProducto, editarProducto } = useContext(ProductsContext)//del contexto ProductsContext nos traemos algunas funciones del cRUD
 
-  const handleChange = (e) => {
-
+  const handleChange = (e) => {//función que toma un evento, usa el name del input y su valor para luego setear producto con esa actualización
     const { name, value } = e.target
     setProducto({ ...producto, [name]:value})
-
   }
 
-  const [errores, setErrores] = useState({})
+  const [errores, setErrores] = useState({})//estado para almacenar errores actualizados
 
+  
   const validarFormulario = () => {
     const nuevosErrores = {}
 
@@ -42,39 +48,41 @@ function FormularioProducto({ productoInicial = {}, modo = 'agregar', onCerrar }
       nuevosErrores.image = 'La url de la imagen es obligatoria'
     }
     setErrores(nuevosErrores)
-    return Object.keys(nuevosErrores).length === 0
+    return Object.keys(nuevosErrores).length === 0//retorna true si nuevosErrores está vacio
   }
 
   const handleSubmit = (e) => {
 
-    e.preventDefault()
-    if (validarFormulario()) {
-      if (modo === 'agregar') {
-        agregarProducto({ ...producto})
-        setProducto(
+    e.preventDefault()//previene el submit por defecto
+    if (validarFormulario()) {//si devuelve true
+      if (modo === 'agregar') {//distingue por modo
+        agregarProducto({ ...producto})//función que actualiza el contexto y la BD
+        setProducto(//intentamos limpiar el form (creo que da problemas)
         { name: "",
           price:"",
           description:"",
           departament:"",
           image:""
-                }
+        }
       )
-      } else {
-        editarProducto(producto)
+      } else {//de no ser modo agregar asume que es edtar
+        editarProducto(producto)//actualiza tanto contexto como BD
       }
-      onCerrar()
-      setErrores({})
-      
+      onCerrar()//esa función que debería cerrar un modal o algo que nos trajimos
+      setErrores({})//limpia errores
+
+      //problema para mostrar el producto actualizado
     }
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Agregar Producto</h2>
+    <form onSubmit={handleSubmit}>{/**aqui usamos el evento que maneja el formulario*/}
+      <h2>{modo === 'agregar' ? 'Agregar' : 'Actualizar'}</h2>{/**condiciona texto del h2 */}
       <fieldset>
         <legend>Datos del producto</legend>
 
-        <label htmlFor="name">Nombre del Producto: 
+        <label htmlFor="name">Nombre del Producto: {/**inicializa con una propiedad de producto{} */}
+          {/**handleChalge es el actualizador */}
           <input 
           type="text"
           name="name" 
@@ -82,9 +90,9 @@ function FormularioProducto({ productoInicial = {}, modo = 'agregar', onCerrar }
           onChange={handleChange} 
           placeholder="Leche larga vida La Serenisima 1L"/>
         </label>
-        {errores.name && <p style={{ color: 'red' }}>{errores.name}</p>}
+        {errores.name && <p style={{ color: 'red' }}>{errores.name}</p>}{/**si la propiedad de errores es true renderiza el error */}
 
-        <label htmlFor="price">Precio: 
+        <label htmlFor="price">Precio: {/**inicializa con una propiedad de producto{} */}
           <input 
             type="number" 
             name="price" 
@@ -94,9 +102,9 @@ function FormularioProducto({ productoInicial = {}, modo = 'agregar', onCerrar }
             placeholder="3000" 
             min={0}/>
         </label>
-        {errores.price && <p style={{ color: 'red' }}>{errores.price}</p>}
+        {errores.price && <p style={{ color: 'red' }}>{errores.price}</p>}{/**si la propiedad de errores es true renderiza el error */}
 
-        <label htmlFor="description">Descripción: 
+        <label htmlFor="description">Descripción: {/**inicializa con una propiedad de producto{} */}
           <textarea 
             name="description" 
             id="description" 
@@ -105,9 +113,9 @@ function FormularioProducto({ productoInicial = {}, modo = 'agregar', onCerrar }
             placeholder="Cartón de leche de 1L...">
           </textarea>
         </label>
-        {errores.description && <p style={{ color: 'red' }}>{errores.description}</p>}
+        {errores.description && <p style={{ color: 'red' }}>{errores.description}</p>}{/**si la propiedad de errores es true renderiza el error */}
 
-        <label htmlFor="departament">Departamento: 
+        <label htmlFor="departament">Departamento: {/**inicializa con una propiedad de producto{} */}
           <input 
             type="text" 
             name="departament" 
@@ -116,23 +124,23 @@ function FormularioProducto({ productoInicial = {}, modo = 'agregar', onCerrar }
             onChange={handleChange}
             placeholder="almacén"/>
         </label>
-        {errores.departament && <p style={{ color: 'red' }}>{errores.departament}</p>}
+        {errores.departament && <p style={{ color: 'red' }}>{errores.departament}</p>}{/**si la propiedad de errores es true renderiza el error */}
 
-        <label htmlFor="image">Imagen: 
+        <label htmlFor="image">Imagen: {/**inicializa con una propiedad de producto{} */} 
           <input 
             type="url" 
             name="image"
             id="image"
-            value={producto.image}
-            onChange={handleChange}
-            placeholder="www.imagenesbonitas.com/carton-de-leche"
+            value={producto.image} 
+            onChange={handleChange} 
+            placeholder="www.imagenesbonitas.c..."
           />
         </label>
-        {errores.image && <p style={{ color: 'red' }}>{errores.image}</p>}
+        {errores.image && <p style={{ color: 'red' }}>{errores.image}</p>}{/**si la propiedad de errores es true renderiza el error */}
 
       </fieldset>
 
-      <button type='submit'>{modo === 'agregar' ? 'Agregar' : 'Actualizar'}</button>
+      <button type='submit'>{modo === 'agregar' ? 'Agregar' : 'Actualizar'}</button>{/**condiciona texto del boton */}
     </form>
   )
 }

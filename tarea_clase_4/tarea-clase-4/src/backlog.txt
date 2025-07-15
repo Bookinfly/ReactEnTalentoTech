@@ -1,0 +1,9 @@
+El carrito y el catálogo son listas dentro de un objeto/array, necesito separar responsabilidades porque es un dolor de cabeza.
+
+problemas:
+
+1- los productos borrados quedan en el stage
+2- al actualizar, no se limpia el form… lo cual no está del todo mal
+3- El producto que se refleja en el form, no se actualiza al cambio pero si en el stage de productos, posiblemente al volver al inicio se vuelve a recargar la BD
+4- en admin los id aparecen con un $
+5- luego de eliminar un producto desde Admin,, se queda en la lista, solo desaparece al volver a productos, pero si vuelvo a admin sigue ahí
