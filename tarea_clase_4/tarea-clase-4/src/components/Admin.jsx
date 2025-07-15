@@ -1,16 +1,13 @@
 import React, { useState, useContext } from "react"
 import FormularioEdicion from "./FormularioEdicion"
-// import { useCart } from "./context/CartContext"
 import { Link } from 'react-router-dom'
 import { ProductsContext } from "./context/ProductsCRUDContext"
 
 
 const Admin = ()=> {
 
-  const { productos = [] } = useContext(ProductsContext)
+  const { productos = [], eliminarProducto } = useContext(ProductsContext)
 
-  // const { cartData, setCartData } = useCart();
-  
   const onCerrar = ()=>{
     alert("onCerrar no hace nada todavía")
   }
@@ -25,10 +22,8 @@ const Admin = ()=> {
     setSeleccionadoPorID(
       productos.find(producto => producto.id === ident)//buscamos el elemento que coincida
     )
-    console.log(seleccionadoPorID)
     setFlagRenderForm(true)
     setEditar(true)
-    console.log(flagRenderForm)
   }
 
   const volverAtras = () => {
@@ -41,6 +36,12 @@ const Admin = ()=> {
     setEditar(false)
     setSeleccionadoPorID({})
     setFlagRenderForm(true)
+  }
+
+  const eliminarProductoPorID = (ident) => {
+    if(confirm(`¿Estás seguro de eliminar el producto con iD:${ident}`)) {
+      eliminarProducto(ident)
+    }
   }
 
 <button onClick={volverAtras} >Volver a la lista</button>
@@ -66,6 +67,7 @@ const Admin = ()=> {
                 <h2 className="card--name">${item.id}</h2>
                 <Link to={`/detalle/${item.id}`} className="button-link"> Ver Detalle </Link>
                 <button onClick={()=>cambiarProducto(item.id)}>Editar</button>
+                <button onClick={()=>eliminarProductoPorID(item.id)}>Eliminar Producto</button>
               </div>
             )
           })
@@ -78,14 +80,13 @@ const Admin = ()=> {
                 <h3 className="card--name">{ `${seleccionadoPorID.name}` }</h3>
                 <p className="card--des">{seleccionadoPorID.description}</p>
                 <h4 className="card--price">${seleccionadoPorID.price}</h4>
-                <h2 className="card--name">${seleccionadoPorID.id}</h2>
+                <h2 className="card--name">{`ID: ${seleccionadoPorID.id}`}</h2>
                 <Link to={`/detalle/${seleccionadoPorID.id}`} className="button-link"> Ver Detalle </Link>
                 <button onClick={()=>cambiarProducto(seleccionadoPorID.id)}>Editar</button>
               </div>:<></>
       }
         </div>
       </section>
-      {/* <CrearProducto onAgregar={agregarProducto}/> */}
       { 
         flagRenderForm&&<div>
         <FormularioEdicion onCerrar={onCerrar} productoInicial={editar===true?seleccionadoPorID:{}} modo={editar===true?"editar":"agregar"}/>

@@ -21,16 +21,13 @@ const Products =  () => {
     cartData.listOfItems.forEach((item, key) => {
       if (cartData.cantItems[key] > 0) {
         x += item.price * cartData.cantItems[key]
-        console.log(x)
       }
     })
     const totalX = parseFloat(x.toFixed(2))
-    console.log("totalX " + totalX)
     if (cartData.total !== totalX) {
       let cartTemp = {...cartData}
       cartTemp.total = totalX
       setCartData(cartTemp)//seteo acumulador dentro de condicional
-      console.log(cartData)
   }
 }
   /**

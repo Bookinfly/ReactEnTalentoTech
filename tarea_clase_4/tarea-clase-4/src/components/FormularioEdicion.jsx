@@ -51,18 +51,18 @@ function FormularioProducto({ productoInicial = {}, modo = 'agregar', onCerrar }
     if (validarFormulario()) {
       if (modo === 'agregar') {
         agregarProducto({ ...producto})
-      } else {
-        editarProducto(producto)
-      }
-      onCerrar()
-
-      setProducto(
+        setProducto(
         { name: "",
           price:"",
           description:"",
           departament:"",
-          image:"" }
+          image:""
+                }
       )
+      } else {
+        editarProducto(producto)
+      }
+      onCerrar()
       setErrores({})
       
     }
