@@ -374,6 +374,7 @@ button:hover{
 
 .main__section__products__cart--total{
   background-color: var(--color-dark);
+  color: var(--color-light);
   padding: 30px;
   margin-top: 20px;
   border-radius: 10px;
