@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import Products from "./Products"
 import { useCart } from './context/CartContext'
+import { Helmet } from "react-helmet-async"
 
 const MainCart = () => {
   const { cartData, setCartData } = useCart();
@@ -52,6 +53,11 @@ const MainCart = () => {
 
   return (
     <main className="main">
+      <Helmet>
+        <title>Catálogo de CrazyMarklet</title>
+        <meta name="description" content="electrodomésticos, decoración y utensillos con los mejores precios" />
+      </Helmet>
+
       <section className="main__section">
         <h1 className="main__section__title">
           Crazy <span className="main__section__title--mod">MARKET</span>

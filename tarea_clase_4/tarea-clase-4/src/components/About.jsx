@@ -1,10 +1,16 @@
-import React from "react";
+import React from "react"
+import { Helmet } from "react-helmet-async"
+
+
 
 const About = ()=>{
 
   return (
     <main className="" style={{backgroundColor:"var(--color-dark)" , color:"var(--color-light)"}}>
-
+        <Helmet>
+          <title>Conoce más sobre nosotros</title>
+          <meta name="description" content="nuestra misión y nuestro enfoque" />
+        </Helmet>
         <section className="main__section" style={{ backgroundColor: "var(--color-dark)", color: "var(--color-one)" }}>
           <h1 className="main__section__title">
             Crazy <span className="main__section__title--mod">MARKET</span>

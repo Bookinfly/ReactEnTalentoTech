@@ -15,12 +15,15 @@ import ProductoDetalle from './components/ProductoDetalle'
 import Loguin from './components/Loguin'
 import RutaProtegida from './components/RutaProtegida'
 import { ProductsProvider } from './components/context/ProductsCRUDContext'
-import { ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify"
+import { HelmetProvider } from "react-helmet-async"
+
 
 
 function App() {
 
   return (
+    <HelmetProvider>
     <AuthProvider>
       <CartProvider>
         <ProductsProvider>
@@ -52,6 +55,7 @@ function App() {
       </ProductsProvider>
     </CartProvider>
     </AuthProvider>
+  </HelmetProvider>
   )
 }
 

@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
+import { Helmet } from "react-helmet-async"
+
 
 const Contact = () => {
   const [tema, setTema] = useState("consulta")
 
   return (
       <form style={{ backgroundColor: "var(--color-dark)", color: "var(--color-one)" }}>
+        <Helmet>
+          <title>Contacto</title>
+          <meta name="description" content="habla con nuestros representantes" />
+        </Helmet>
         <fieldset className="mb-4">
           <legend style={{ color: "var(--color-one)" }} className="h1 fw-bold">Formulario de contacto</legend>
 

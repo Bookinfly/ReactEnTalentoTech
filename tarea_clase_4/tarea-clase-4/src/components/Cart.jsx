@@ -1,6 +1,8 @@
 import React, {useState} from "react"
 import { useCart } from './context/CartContext'
 import { ToastContainer, toast } from "react-toastify"
+import { Helmet } from "react-helmet-async"
+
 
 
 const Cart = ()=> {
@@ -16,7 +18,12 @@ const Cart = ()=> {
   const compra = ()=> toast.success("Usted realizo una compra FICTICIA por $" + cartData.total + " imaginarios")
 
 
-  return <div>
+  return(
+    <div>
+      <Helmet>
+        <title>Carrito de CrazyMarklet</title>
+        <meta name="description" content="carrito de compras de la mejor tienda de elementos de cocina" />
+      </Helmet>
     <section id="carrito" className="main__section__products__cart">
       <h2 className="main__section__products__cart--title">Productos</h2>
       <ol id="compras" className="main__section__products__cart__ol">
@@ -42,7 +49,7 @@ const Cart = ()=> {
       </div>
 
     </section>
-  </div>
+  </div>) 
   
 }
 
