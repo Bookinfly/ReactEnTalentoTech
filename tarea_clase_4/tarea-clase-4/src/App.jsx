@@ -15,6 +15,7 @@ import ProductoDetalle from './components/ProductoDetalle'
 import Loguin from './components/Loguin'
 import RutaProtegida from './components/RutaProtegida'
 import { ProductsProvider } from './components/context/ProductsCRUDContext'
+import { ToastContainer } from "react-toastify";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
     <AuthProvider>
       <CartProvider>
         <ProductsProvider>
+          <ToastContainer />
           <Header />
           <Routes>
             <Route path='/' element={<MainCart />} />{/**va a haber que pasar datos por la ruta */}

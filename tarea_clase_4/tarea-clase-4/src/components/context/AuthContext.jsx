@@ -1,4 +1,5 @@
 import {  createContext, useContext, useState } from "react"
+import { ToastContainer, toast } from "react-toastify"
 
 const AuthContext = createContext()
 
@@ -10,14 +11,15 @@ export const AuthProvider = ( {children} ) => {
     const token = `fake-token-${username}`
 
     localStorage.setItem('authToken', token)
-    alert("Bienvenido")
+    // alert("Bienvenido")
 
     setUser(username)
   }
 
   const logout = () => {
     localStorage.removeItem('authToken')
-    alert("Usuario desconectado")
+    // alert("Usuario desconectado")
+    toast.warn("Usuario desconectado")         // Amarillo
     setUser(null)
   }
 

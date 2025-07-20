@@ -69,7 +69,6 @@ const MainCart = () => {
             <img
               src="./images/woman.png"
               alt="Mujer usando su móvil desde el sofá"
-              style={{ minWidth: "200px", maxWidth: "35vw" }}
               className="main__section__figure__image"
             />
           </figure>

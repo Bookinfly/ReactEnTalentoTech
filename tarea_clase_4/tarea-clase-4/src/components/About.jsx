@@ -3,11 +3,9 @@ import React from "react";
 const About = ()=>{
 
   return (
-    <main className="container" style={{backgroundColor:"var(--color-dark)" , color:"var(--color-light)"}}>
+    <main className="" style={{backgroundColor:"var(--color-dark)" , color:"var(--color-light)"}}>
 
-        <section className="main__section" style={{backgroundColor:"var(--color-dark)" , color:"var(--color-one)"}}> 
-          {/**reutilizamos estilos de main */}
-
+        <section className="main__section" style={{ backgroundColor: "var(--color-dark)", color: "var(--color-one)" }}>
           <h1 className="main__section__title">
             Crazy <span className="main__section__title--mod">MARKET</span>
           </h1>
@@ -22,23 +20,35 @@ const About = ()=>{
             />
           </figure>
 
-          <div className="main__section__div" style={{backgroundColor:"var(--color-two)" , color:"var(--color-one)"}}>
-            <figure className="main__section__figure" >
+          <div
+            className="d-flex flex-wrap align-items-center justify-content-between my-4"
+            style={{
+              backgroundColor: "var(--color-two)",
+              color: "var(--color-one)",
+              border: "8px solid var(--color-one)",
+              padding: "1rem"
+            }}
+          >
+            <div className="col-12 col-lg-6 text-center mb-4 mb-lg-0">
               <img
                 src="./images/amoDeCasa.png"
                 alt="Hombre mirando su cocina cocina con orgullo en estilo pin-up"
-                style={{ minWidth: "200px", maxWidth: "35vw" }}
-                className="main__section__figure__image"
+                className="img-fluid"
               />
-            </figure>
-            
-            <h4 className="h2 text-center d-flex align-items-center justify-content-center">Nuestra misión es acercarte estilo y funcionalidad.</h4>
+            </div>
+
+            <div className="col-12 col-lg-6 d-flex align-items-center justify-content-center">
+              <h3 className="main__section__h3 text-center px-3">
+                Nuestra misión es acercarte estilo y funcionalidad.
+              </h3>
+            </div>
           </div>
-          
-          </section>
+        </section>
+
 
           {/**---------Section con estilos propios--------- */}
-          <section id="nosotros" className="col-12 p-4">
+        <section id="nosotros" className="container">
+          <div className="col-12 p-4">
             <h2 className="h1 mb-4" style={{ color: "var(--color-strong)" }}>Sobre nosotros</h2>
 
             <div className="col-12 container p-4">
@@ -110,6 +120,8 @@ const About = ()=>{
               </div>
 
             </div>
+          </div>
+            
           </section>
   </main>
   )

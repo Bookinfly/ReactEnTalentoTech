@@ -1,5 +1,6 @@
 import React, {useState} from "react"
 import { useCart } from './context/CartContext'
+import { ToastContainer, toast } from "react-toastify"
 
 
 const Cart = ()=> {
@@ -12,7 +13,7 @@ const Cart = ()=> {
     setCartData(cartDataTemp)
   }
 
-  const compra = ()=> alert("Usted realizo una compra FICTICIA por $" + cartData.total + " imaginarios")
+  const compra = ()=> toast.success("Usted realizo una compra FICTICIA por $" + cartData.total + " imaginarios")
 
 
   return <div>

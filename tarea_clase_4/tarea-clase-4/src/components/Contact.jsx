@@ -1,41 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 
-const Contact = ()=> {
+const Contact = () => {
+  const [tema, setTema] = useState("consulta")
+
   return (
-    <main className="container p-4" style={{ backgroundColor: "var(--color-dark)", color: "var(--color-one)" }}>
-      <h1 className="h1" style={{ color: "var(--color-one)" }}>Formulario de contacto</h1>
-      <form action="" className="col-12" >
-        <fieldset className="m-1">
-          <legend>Datos personales</legend>
-          <label htmlFor="nameC">Nombre: 
-            <input type="text" name="nameC" placeholder="Fulano" required className="m-2"/>
-          </label>
-          <label htmlFor="apellidoC">Apellido: 
-            <input type="text" name="apellidoC" placeholder="Lopéz" className="m-2"/>
-          </label>
-          <label htmlFor="emailC">Email: 
-            <input type="email" name="emailC" placeholder="flopez@gmail.com" required className="m-2"/>
-          </label>
+      <form style={{ backgroundColor: "var(--color-dark)", color: "var(--color-one)" }}>
+        <fieldset className="mb-4">
+          <legend style={{ color: "var(--color-one)" }} className="h1 fw-bold">Formulario de contacto</legend>
+
+          <label htmlFor="nameC" style={{ color: "var(--color-one)" }}>Nombre:</label>
+          <input type="text" id="nameC" name="nameC" placeholder="Fulano" required />
+
+          <label htmlFor="apellidoC" style={{ color: "var(--color-one)" }}>Apellido:</label>
+          <input type="text" id="apellidoC" name="apellidoC" placeholder="López" />
+
+          <label htmlFor="emailC" style={{ color: "var(--color-one)" }}>Email:</label>
+          <input type="email" id="emailC" name="emailC" placeholder="flopez@gmail.com" required />
         </fieldset>
-        <fieldset>
-          <legend>Mensaje</legend>
-          <label htmlFor="temaC">Motivo del mensaje: 
-            <select name="temaC" id="" className="m-2 w-25" style={{ color: "var(--color-dark)" }}>
-              <option value="consulta" selected>Consulta</option>
-              <option value="reclamo" >Reclamo</option>
-              <option value="otro" >Otro</option>
+
+        <fieldset className="mt-4">
+          <legend className="mt-4" style={{ color: "var(--color-one)" }}>Mensaje</legend>
+
+          <label htmlFor="temaC" style={{ color: "var(--color-one)" }}>Motivo del mensaje:
+            <select
+              name="temaC"
+              className="m-2 w-25"
+              value={tema}
+              onChange={(e) => setTema(e.target.value)}
+            >
+              <option value="consulta">Consulta</option>
+              <option value="reclamo">Reclamo</option>
+              <option value="otro">Otro</option>
             </select>
           </label>
-          <label htmlFor="textoC">
-            <textarea name="textoC" id="" className="m-2 col-11">
-              Ingrese su texto aquí:...
-            </textarea>
-          </label>
+
+          <label htmlFor="textoC" style={{ color: "var(--color-one)" }}>Mensaje:</label>
+          <textarea id="textoC" name="textoC" placeholder="Ingrese su texto aquí..." className="col-11" />
         </fieldset>
-        <button type="" className="m-2 rounded-3 col-6 fw-bold mx-auto" >Enviar</button>
+
+        <button type="submit" className="fw-bold col-6 rounded-3 mx-auto mt-2">Enviar</button>
       </form>
-    </main>
   )
 }
 
-export default Contact
+export default Contact;

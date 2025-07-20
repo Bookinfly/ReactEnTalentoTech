@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useEffect } from "react"
 import Cart from "./Cart"
 import { useCart } from './context/CartContext'
 import { Link } from 'react-router-dom'

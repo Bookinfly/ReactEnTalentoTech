@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react"
 import FormularioEdicion from "./FormularioEdicion"
 import { Link } from 'react-router-dom'
 import { ProductsContext } from "./context/ProductsCRUDContext"
+import { ToastContainer, toast } from "react-toastify"
 
 /**
  * 
@@ -40,9 +41,9 @@ const Admin = ()=> {
    * deja como un objeto vacio a seleccionadoPoID
    */
   const volverAtras = () => {
-  setFlagRenderForm(false)
-  setEditar(false)
-  setSeleccionadoPorID({})
+    setFlagRenderForm(false)
+    setEditar(false)
+    setSeleccionadoPorID({})
 }
 
   /**
@@ -64,6 +65,7 @@ const Admin = ()=> {
     if(confirm(`¿Estás seguro de eliminar el producto con iD:${ident}`)) {
       console.log("iden es tipo : " + typeof(ident))
       eliminarProducto(ident)//función del contexto
+      toast.success("Producto eliminado exitosamente")
     }
   }
 

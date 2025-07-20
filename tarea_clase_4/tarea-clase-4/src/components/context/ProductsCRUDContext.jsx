@@ -1,5 +1,6 @@
 import React, { createContext, useState } from "react"
 import { useCart } from "./CartContext"
+import { ToastContainer, toast } from "react-toastify";
 
 export const ProductsContext = createContext()
 
@@ -8,11 +9,12 @@ export function ProductsProvider ( { children } ) {
 
   const { cartData } = useCart();//lista original
 
-  const [productos, setProductos] = useState(cartData.listOfItems)//elimino validación, no me sirve que la app corra si falla
+  const [productos, setProductos] = useState(cartData.listOfItems)
   console.log("1 - variable productos" + productos)
 
   async function modificarBD ( productoParaBD, metodo, id = null) {
-    if (id) productoParaBD.id = Number(id); // Convertir a número
+
+    if (id) productoParaBD.id = Number(id) // Convertir a número
     const idValido = Number.isInteger(id)&&id>0||id=== null? true : false
     const productoValido = typeof(productoParaBD) === 'object' && productoParaBD !== null? true : false
     const metodoValido = metodo === 'PUT' || metodo === 'DELETE' || metodo === 'POST'
@@ -27,7 +29,6 @@ export function ProductsProvider ( { children } ) {
           headers: { 'Content-Type': 'application/json' },
           body: metodo !== 'DELETE' ? JSON.stringify(productoParaBD) : undefined
         })
-        console.log("3 -respuesta de la BD" + respuesta)
 
         if (!respuesta.ok) throw new Error(`Error ${respuesta.status}`)
 
@@ -35,20 +36,18 @@ export function ProductsProvider ( { children } ) {
 
       } catch (error) {
 
-        alert("hubo un error!!!")
+        // alert("hubo un error!!!")
+        toast.error("Ocurrió un error")
         console.error(error)
 
       } finally {
-        console.log("fetch concretado con éxito")
+        console.log("fech realizado")
       } 
     }
   }
 
   const agregarProducto = async (nuevoProducto) => {//funciona
-      console.log("4 - nuevoProducto")
-      console.log(nuevoProducto)
       const resultado = await modificarBD(nuevoProducto, 'POST')
-      console.log(resultado)
       setProductos(listaActual => [...listaActual, resultado])
   }
 

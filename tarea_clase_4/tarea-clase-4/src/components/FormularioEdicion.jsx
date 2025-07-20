@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import { ToastContainer, toast } from "react-toastify"
 
 import { ProductsContext } from './context/ProductsCRUDContext'//Contexto de productos en local con el CRUD (realmente no tiene el Read lo consume del contexto del carrito)
 
@@ -57,6 +58,7 @@ function FormularioProducto({ productoInicial = {}, modo = 'agregar', onCerrar ,
     if (validarFormulario()) {//si devuelve true
       if (modo === 'agregar') {//distingue por modo
         agregarProducto({ ...producto})//función que actualiza el contexto y la BD
+        toast.success("Producto agregado al carrito!")
         setProducto(//intentamos limpiar el form (creo que da problemas)
         { name: "",
           price:"",
@@ -67,6 +69,7 @@ function FormularioProducto({ productoInicial = {}, modo = 'agregar', onCerrar ,
       )
       } else {//de no ser modo agregar asume que es edtar
         editarProducto(producto)//actualiza tanto contexto como BD
+        toast.success("Producto editado!")
         actualizarCard(producto)
       }
       onCerrar()//esa función que debería cerrar un modal o algo que nos trajimos
