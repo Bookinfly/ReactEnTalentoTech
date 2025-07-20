@@ -23,20 +23,20 @@ const Loguin = ()=> {
   return (
     <form onSubmit={handleSubmit}>
       <fieldset>
-        <legend>Iniciar sesión</legend>
+        <legend style={{color:"var(--color-one)"}} className='h1 fw-bold'>Iniciar sesión</legend>
 
-        <label htmlFor="email">Email: </label>
-        <input type="email" id="email" name="email" placeholder="usuario@correo.com" value={usuario} onChange={(e) => setUsuario(e.target.value)}/>
+        <label htmlFor="email" style={{color:"var(--color-one)"}}>Email: </label>
+        <input type="email" id="email" name="email" placeholder="usuario@correo.com" value={usuario} onChange={(e) => setUsuario(e.target.value)} required/>
 
-        <label htmlFor="pass">Contraseña: </label>
-        <input type="password" name="pass" id="pass" value={password} onChange={ (e) => setPassword(e.target.value)}/>
+        <label htmlFor="pass" style={{color:"var(--color-one)"}}>Contraseña: </label>
+        <input type="password" name="pass" id="pass" value={password} onChange={ (e) => setPassword(e.target.value)} required/>
 
-        <button type="button" className="btn__loguin" onClick={handleSubmit}> Iniciar sesión </button>
+        <button type="button" className="fw-bold col-6 rounded-3 mx-auto" onClick={handleSubmit} required> Iniciar sesión </button>
 
       </fieldset>
 
-      <button type="button" className="btn__loguin">Crear cuenta</button>
-      <button type="button" onClick={logout} className="btn__loguin">Cerrar sesión</button>
+      <button type="button" className="fw-bold  col-6 rounded-3 mx-auto" disabled > Crear cuenta</button>
+      <button type="button" onClick={logout} className="fw-bold  col-6 rounded-3 mx-auto">Cerrar sesión</button>
 
 
     </form>

@@ -66,7 +66,7 @@ export function ProductsProvider ( { children } ) {
   const eliminarProducto = async (id) => {
     id = Number(id)
     await modificarBD({}, 'DELETE', id)//borra de la BD
-    setProductos(listaActual => listaActual.filter(productoDeLista => productoDeLista.id !== id))//Borra del stage local
+    setProductos(listaActual => listaActual.filter(productoDeLista => Number(productoDeLista.id) !== id))//Borra del stage local
     //pero no se borra de la lista de admin que ya cargo
   }
 

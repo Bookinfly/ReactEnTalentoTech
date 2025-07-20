@@ -2,16 +2,19 @@ El carrito y el catálogo son listas dentro de un objeto/array, necesito separar
 
 problemas:
 
-1- los productos borrados quedan en el stage
-
 2- al actualizar, no se limpia el form… lo cual no está del todo mal
 
 
 
-5- luego de eliminar un producto desde Admin,, se queda en la lista, solo desaparece al volver a productos, pero si vuelvo a admin sigue ahí
+
 
 
 reparados:
  4- en admin los id aparecen con un $
 
  3- El producto que se refleja en el form, no se actualiza al cambio pero si en el stage de productos, posiblemente al volver al inicio se vuelve a recargar la BD { parece deberse a que una variable se actuliza con su setter en un componente, pero tambien es utilizada en el componente padre para mostrar una card, la card no se actualiza poruque la variable solose actualiza en el componente hijo}
+
+5- 5- luego de eliminar un producto desde Admin,, se queda en la lista, solo desaparece al volver a productos, pero si vuelvo a admin sigue ahí
+
+1- los productos borrados quedan en el stage
+

@@ -62,6 +62,7 @@ const Admin = ()=> {
  */
   const eliminarProductoPorID = (ident) => {
     if(confirm(`¿Estás seguro de eliminar el producto con iD:${ident}`)) {
+      console.log("iden es tipo : " + typeof(ident))
       eliminarProducto(ident)//función del contexto
     }
   }
