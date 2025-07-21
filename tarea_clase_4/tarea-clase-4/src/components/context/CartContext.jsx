@@ -1,5 +1,4 @@
-//DEBO CABIAR LOS NOMBRES
-//NO ES SOLO EL CARRITO, SINO EL CATÁLOGO CON EL CARRITO
+// Contexto que maneja el carrito de compras y lo sincroniza con localStorage
 
 import { createContext, useContext, useState, useEffect } from 'react';
 
@@ -8,10 +7,10 @@ const CartContext = createContext();
 
 // 2. Creamos el componente proveedor del contexto
 export const CartProvider = ({ children }) => {
-  // Estado inicial: intentamos cargar desde localStorage
+  // Estado inicial: intenta cargar desde localStorage
   const [cartData, setCartData] = useState(() => {
     const saved = localStorage.getItem('cartData');
-    return saved ? JSON.parse(saved) : { listOfItems: [], cantItems: [], total: 0 };//???
+    return saved ? JSON.parse(saved) : { listOfItems: [], cantItems: [], total: 0 };
   });
 
   // 3. Guardamos en localStorage cada vez que cambia
