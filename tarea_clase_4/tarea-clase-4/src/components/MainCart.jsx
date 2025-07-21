@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react"
-import Products from "./Products"
+// import Products from "./Products"
 import { useCart } from './context/CartContext'
 import { Helmet } from "react-helmet-async"
+import AllProductos from "./AllProductos"
 
 const MainCart = () => {
   const { cartData, setCartData } = useCart();
@@ -83,7 +84,7 @@ const MainCart = () => {
       </section>
       <section className="main__section">
         {cartData.listOfItems.length > 0 ? (
-          <Products  />) : (
+          <AllProductos  />) : (
           <p style={{ fontWeight: "bold", color: "#e85604" }}>
             No hay productos disponibles por el momento.
           </p>
