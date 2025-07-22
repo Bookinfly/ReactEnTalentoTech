@@ -1,12 +1,19 @@
+import { FaSearch } from 'react-icons/fa'
 
 export default function Buscador({ onFiltrar }) {
   return (
-    <input
-      type="text"
-      placeholder="Buscar productos..."
-      className="form-control mb-3"
-      onChange={(e) => onFiltrar(e.target.value)}
-    />
+    <div className="input-group mb-3 mx-auto my-1" style={{width:"80%"}}>
+      <span className="input-group-text">
+        <FaSearch />
+      </span>
+      <input
+        type="text"
+        className="form-control"
+        placeholder="Buscar productos..."
+        onChange={(e) => onFiltrar(e.target.value)}
+      />
+    </div>
   )
 }
+
 

@@ -12,7 +12,7 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box!important;
   font-family: "Lexend Deca", sans-serif;
   font-optical-sizing: auto;
   font-style: normal;
@@ -31,7 +31,7 @@ header{
   display: flex;
   width:100%;
   max-height: 6rem;
-  min-height: 10vh;
+  min-height: 3rem;
   background-color: var(--color-dark);
   color: var(--color-one);
   padding: 1rem;
@@ -541,6 +541,8 @@ fieldset{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-height: 10vh;
+  height: 60px;
 }
 
 .header--mobile{
@@ -569,23 +571,47 @@ fieldset{
 
 .header__box{
   display: flex;
-  align-items: center;
+  align-items:center;
   justify-content: space-around;
   margin-right: 40px;
+  height: 100%;
+}
+
+.header__box__nav{
+  height: 100%;
+  display: flex;
+  align-items: center !important;
+  justify-content: center!important;
 }
 
 .header__box__nav__ul{
+  display: flex!important;
+  height: 100%!important;
   list-style: none;
-  display: flex;
+  align-items: center!important; /* centrado vertical */
+  justify-content: center!important; /* centrado horizontal opcional */
+  margin: 0!important;/*ESTE PARECE QUE ERA EL PROBLEMA CON BOOTSTRAP*/
   margin-right: 10px;
   filter: drop-shadow(2px 2px 2px rgba(19, 95, 131, 0.9));
   -webkit-filter: drop-shadow(2px 2px 2px rgba(19, 95, 131, 0.9));
 }
 
 .header__box__nav__ul--link{
-  margin: 0px;
+  margin: 0px!important;
   background-color: var(--color-light);
-  padding: 14px;
+  display: flex!important;
+  align-items: center!important;
+  justify-content: center!important;
+  height: 100%!important;/* Para que el li tome el alto del nav */
+  padding: 8px 14px!important;
+  margin: auto;
+}
+
+.header__box__nav__ul--link a {
+  display: flex;
+  align-items: center;
+  height: 100%!important;
+  padding: 0!important;
 }
 
 .header__box__nav__ul--link:first-child{
