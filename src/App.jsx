@@ -5,7 +5,7 @@ import Footer from "./components/Footer"
 import Cart from './components/Cart'
 import About from './components/About'
 import Contact from './components/Contact'
-import Cookies from './components/cookies'
+import Cookies from './components/Cookies'
 import Politicas from './components/Politicas'
 import Admin from './components/Admin'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
