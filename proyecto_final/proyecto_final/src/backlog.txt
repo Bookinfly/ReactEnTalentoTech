@@ -67,17 +67,4 @@ Se pospone la refactorización estructural a una rama paralela para evitar rompe
 -------------------------
 
 
-carrito se pierde al moverse fuera de productos y carrito
-botón volver a la lista
-modal oncerrar
 
-
-
-resueltos----------
-
-
-estilos de ver detalles
-botón de agregar productos
-botones de editar y eliminar productos
-colores en formulario actualizar
-formulario agregar se mueve el botón agregar

@@ -25,11 +25,13 @@ body {
   min-height: 100vh!important;
   background-color: var(--color-light)!important;
   color: var(--color-dark)!important;
+  min-width: 260px!important;
 }
 
 header{
   display: flex;
   width:100%;
+  min-width: 260px!important;
   max-height: 6rem;
   min-height: 3rem;
   background-color: var(--color-dark);
@@ -41,6 +43,7 @@ main {
   display: flex;
   flex-direction: column;
   width: 90vw;
+  min-width: 260px!important;
   /* align-items: center;
   justify-content: center; */
   background-color: var(--color-two);
@@ -50,12 +53,12 @@ main {
 }
 
 footer {
+  min-width: 260px!important;
   width: 100%;
   padding: 1rem;
   background-color: var(--color-dark);
   color: white;
   margin-top: 2rem;
-  padding: 1rem;
   min-height: 10vh;
 }
 
