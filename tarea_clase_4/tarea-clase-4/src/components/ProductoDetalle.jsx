@@ -13,8 +13,8 @@ const item = cartData.listOfItems.find(element => element.id == id);
 
 
   return (
-      <div className="main__section__products">
-        <div className="main__section__products__list">
+      <div className="main__section__products--detalle">
+        <div className="main__section__products__list--detalle">
             <div key={id} className="main__section__products__list--card">
               <figure className="card__figure">
               <img src={item.image} alt={item.name} className="card__figure--img"/>

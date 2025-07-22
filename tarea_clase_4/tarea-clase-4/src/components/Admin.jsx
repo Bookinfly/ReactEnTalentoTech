@@ -5,7 +5,7 @@ import { ProductsContext } from "./context/ProductsCRUDContext"
 import { ToastContainer, toast } from "react-toastify"
 
 /**
- * 
+ * mwlmml
  * @returns componente con sección admin
  */
 const Admin = ()=> {
@@ -74,10 +74,12 @@ const Admin = ()=> {
   return (
     <div > 
 
-          <section className="main__section__products">
+          <section className="main__section__products--admin">
             <h1>Gestión de productos</h1>
-            {/**condiona el render del boton */}
-            {!flagRenderForm&&<button onClick={nuevoProducto} >Agregar Producto</button>}
+        {!flagRenderForm&&<div  className="main__section__products__list--agregar">
+                              {/**condiona el render del boton */}
+        <button onClick={nuevoProducto} className="button-agregar">Agregar Producto</button>
+        </div>}
 
         {/** recorre la lista y en cada iteración crea un div */}
         <div className="main__section__products__list" >
@@ -94,8 +96,8 @@ const Admin = ()=> {
                 <h4 className="card--price">${item.price}</h4>
                 <h2 className="card--name">ID: {item.id}</h2>
                 <Link to={`/detalle/${item.id}`} className="button-link"> Ver Detalle </Link>
-                <button onClick={()=>cambiarProducto(item.id)}>Editar</button>
-                <button onClick={()=>eliminarProductoPorID(item.id)}>Eliminar Producto</button>
+                <button onClick={()=>cambiarProducto(item.id)} className="button-link">Editar</button>
+                <button onClick={()=>eliminarProductoPorID(item.id)} className="button-link">Eliminar Producto</button>
               </div>
             )
           })
@@ -112,16 +114,19 @@ const Admin = ()=> {
                 <h4 className="card--price">${seleccionadoPorID.price}</h4>
                 <h2 className="card--name">{`ID: ${seleccionadoPorID.id}`}</h2>
                 <Link to={`/detalle/${seleccionadoPorID.id}`} className="button-link"> Ver Detalle </Link>
-                <button onClick={()=>cambiarProducto(seleccionadoPorID.id)}>Editar</button>
-              </div>:<></>
+                <button onClick={()=>cambiarProducto(seleccionadoPorID.id)}  className="button-link">Editar</button>
+              </div>
+              :<></>
       }
         </div>
       </section>
       { 
         flagRenderForm&&<div>
-          {/**aca usamos seleccionadoPorIDe en el condicional del prop */}
+          {/**aca usamos seleccionadoPorIDe en el condicional del prop  */}
         <FormularioEdicion onCerrar={onCerrar} productoInicial={editar===true?seleccionadoPorID:{}} modo={editar===true?"editar":"agregar"} actualizarCard={setSeleccionadoPorID}/>
-        <button onClick={volverAtras} className="button-back">Volver a la lista</button>
+          <div className="container-fluid main__section rounded-3 p-3 p-sm-1 d-flex justify-content-center align-items-center flex-column" style={{backgroundColor:"var(--color-dark)", width:"80%"}}>
+            <button onClick={volverAtras} className="button-link mx-auto p-4 p-sm-1">Volver a la lista</button>
+          </div>
         </div>
       }
       

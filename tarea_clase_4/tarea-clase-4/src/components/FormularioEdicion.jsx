@@ -80,10 +80,10 @@ function FormularioProducto({ productoInicial = {}, modo = 'agregar', onCerrar ,
   }
 
   return (
-    <form onSubmit={handleSubmit}>{/**aqui usamos el evento que maneja el formulario*/}
-      <h2>{modo === 'agregar' ? 'Agregar' : 'Actualizar'}</h2>{/**condiciona texto del h2 */}
+    <form onSubmit={handleSubmit} style={{color:"var(--color-one)", width:"80%"}} className='p-4 container rounded-3 mb-4'>{/**aqui usamos el evento que maneja el formulario*/}
+      <h2 className='mx-auto h1 mb-4'>{modo === 'agregar' ? 'Agregar' : 'Actualizar'}</h2>{/**condiciona texto del h2 */}
       <fieldset>
-        <legend>Datos del producto</legend>
+        <legend className='h4 mb-2'>Datos del producto</legend>
 
         <label htmlFor="name">Nombre del Producto: {/**inicializa con una propiedad de producto{} */}
           {/**handleChalge es el actualizador */}
@@ -92,7 +92,9 @@ function FormularioProducto({ productoInicial = {}, modo = 'agregar', onCerrar ,
           name="name" 
           value={producto.name} 
           onChange={handleChange} 
-          placeholder="Leche larga vida La Serenisima 1L"/>
+          placeholder="bowl en cobre y negro mate"
+          className='mx-2'
+          />
         </label>
         {errores.name && <p style={{ color: 'red' }}>{errores.name}</p>}{/**si la propiedad de errores es true renderiza el error */}
 
@@ -104,7 +106,8 @@ function FormularioProducto({ productoInicial = {}, modo = 'agregar', onCerrar ,
             value={producto.price} 
             onChange={handleChange} 
             placeholder="3000" 
-            min={0}/>
+            min={0}
+            className='mx-2'/>
         </label>
         {errores.price && <p style={{ color: 'red' }}>{errores.price}</p>}{/**si la propiedad de errores es true renderiza el error */}
 
@@ -114,7 +117,8 @@ function FormularioProducto({ productoInicial = {}, modo = 'agregar', onCerrar ,
             id="description" 
             value={producto.description} 
             onChange={handleChange} 
-            placeholder="Cartón de leche de 1L...">
+            placeholder="Cartón de leche de 1L..."
+            className='mx-2'>
           </textarea>
         </label>
         {errores.description && <p style={{ color: 'red' }}>{errores.description}</p>}{/**si la propiedad de errores es true renderiza el error */}
@@ -126,11 +130,12 @@ function FormularioProducto({ productoInicial = {}, modo = 'agregar', onCerrar ,
             id="departament" 
             value={producto.departament} 
             onChange={handleChange}
-            placeholder="almacén"/>
+            placeholder="almacén"
+            className='mx-2'/>
         </label>
         {errores.departament && <p style={{ color: 'red' }}>{errores.departament}</p>}{/**si la propiedad de errores es true renderiza el error */}
 
-        <label htmlFor="image">Imagen: {/**inicializa con una propiedad de producto{} */} 
+        <label htmlFor="image" className='mb-4'>Imagen: {/**inicializa con una propiedad de producto{} */} 
           <input 
             type="url" 
             name="image"
@@ -138,13 +143,18 @@ function FormularioProducto({ productoInicial = {}, modo = 'agregar', onCerrar ,
             value={producto.image} 
             onChange={handleChange} 
             placeholder="www.imagenesbonitas.c..."
-          />
+            className='mx-2'/>
         </label>
         {errores.image && <p style={{ color: 'red' }}>{errores.image}</p>}{/**si la propiedad de errores es true renderiza el error */}
 
       </fieldset>
 
-      <button type='submit'>{modo === 'agregar' ? 'Agregar' : 'Actualizar'}</button>{/**condiciona texto del boton */}
+      <div className="text-center mt-4 mb-4 p-1">
+        <button type='submit' className='button-link'>
+          {modo === 'agregar' ? 'Agregar' : 'Actualizar'}
+        </button>
+      </div>
+{/**condiciona texto del boton */}
     </form>
   )
 }

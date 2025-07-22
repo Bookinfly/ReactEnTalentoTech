@@ -128,7 +128,7 @@ export default function AllProductos() {
         <span className="main__section__products__div--price">
           Carrito por un total de ${cartData.total.toFixed(2)}
         </span>
-        <Link to={"/cart"} className="button-link main__section__products__div--link">
+        <Link to={"/cart"} className="button-link ">
           Ir al carrito
         </Link>
       </div>
